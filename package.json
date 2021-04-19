@@ -1,0 +1,57 @@
+{
+  "name": "mern-twitter",
+  "version": "14.16.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.15",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.13.15",
+    "babel-register": "^6.26.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "concurrently": "^6.0.2",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.4",
+    "npm-run-all": "^4.1.5",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "rimraf": "^3.0.2",
+    "validator": "^13.5.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "nodemonConfig": {
+    "watch": [
+      "app/*",
+      "config/*",
+      "public/*"
+    ],
+    "ignore": [
+      "**/__tests__/**",
+      "*.test.js",
+      "*.spec.js"
+    ]
+  },
+  "scripts": {
+    "start": "node ./app/app.js",
+    "server": "nodemon ./app/app.js",
+    "server:debug": "nodemon --inspect ./app/app.js",
+    "frontend-install": "npm install --prefix frontend",
+    "frontend": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
+    "debug": "concurrently \"npm run server:debug\" \"npm run frontend\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
